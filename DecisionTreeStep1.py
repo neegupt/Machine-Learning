@@ -26,6 +26,15 @@ for i in range(1,n):
     for j in range(1,n):
         if featurestrength[i]>featurestength[j]:
             optimalfeature=i
+datasplit_1_1 = []  
+datasplit_1_2 = []
+for i in range(0,n):
+    if data[i][optimalfeature]=1:
+        datasplit_1_1.append[data[i]]
+    if else:
+        datasplit_1_2.append[data[i]]
+        
+        
     
 
 
