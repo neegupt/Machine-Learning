@@ -28,6 +28,11 @@ def strength(points, level):
 	featurestrength2 = featurestrength
 
 	optimalfeature = [abs(50-x) for x in featurestrength[1:]].index(max([abs(50-x) for x in featurestrength[1:]]))+1
+	for i in range (0,100):
+    		if data[i][optimalfeature] = 0:
+        		datapoint_1.append[data[i]]
+    		else:
+        		datapoint_2.append[data[i]]
 
 	# print featurestrength[1:]
 	# sort stuff here
@@ -36,6 +41,7 @@ def strength(points, level):
 	level+=1
 	for datapoint in datapoints:
 		strength(datapoint,level)
+		
 
 
 strength(data,0)
