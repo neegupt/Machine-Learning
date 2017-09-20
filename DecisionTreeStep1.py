@@ -17,6 +17,10 @@ for j in range (0,100):
     for i in range(0,10):
         if (data[j][i]==1 and data[j][0]==1) or (data[j][i]==0 and data[j][0]==1):
             featurestrength[i]+=1
-
+for i in range (0,10):
+    for j in range (0,10):
+        if featurestrength[i]>featurestrength[j]:
+            print (i)
+            
     
 
