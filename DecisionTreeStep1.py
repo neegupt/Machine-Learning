@@ -1,6 +1,8 @@
 from random import randint
+import random
 
 data = []
+random.seed("SamTopNeelBottom")
 for j in range (0,100):
     new_list = []
     for i in range (0,10):
