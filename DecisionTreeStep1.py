@@ -25,8 +25,6 @@ def strength(points, level):
 	        if (data[j][i]==1 and data[j][0]==1) or (data[j][i]==0 and data[j][0]==0):
 	            featurestrength[i]+=1
 
-	featurestrength2 = featurestrength
-
 	optimalfeature = [abs(50-x) for x in featurestrength[1:]].index(max([abs(50-x) for x in featurestrength[1:]]))+1
 	for i in range (0,100):
     		if data[i][optimalfeature] = 0:
