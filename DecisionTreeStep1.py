@@ -4,7 +4,7 @@ import random
 
 n=10
 
-Depth=5
+Depth=3
 
 data = []
 # random.seed("SamTopNeelBottom")
@@ -16,7 +16,8 @@ for j in range (0,100):
 # print (data)
 
 final = []
-def strength(points, level):
+exclude = []
+def strength(points, level, exclude):
 	if level>=Depth:
 		final.append([points])
 	else:
@@ -24,22 +25,26 @@ def strength(points, level):
 
 		for j in range (0,len(points)):
 		    for i in range(1,n):
-		        if (data[j][i]==1 and data[j][0]==1) or (data[j][i]==0 and data[j][0]==0):
+		    	if i in exclude:
+		    		featurestrength[i]=50
+		        elif (data[j][i]==1 and data[j][0]==1) or (data[j][i]==0 and data[j][0]==0):
 		            featurestrength[i]+=1
 
-		featurestrength2 = featurestrength
 
 		optimalfeature = [abs(50-x) for x in featurestrength[1:]].index(max([abs(50-x) for x in featurestrength[1:]]))+1
 		datapoint_1=[]
 		datapoint_2=[]
+		print("optimal", optimalfeature)
 		for i in range (0,100):
 			if data[i][optimalfeature] == 0:
 				datapoint_1.append([data[i]])
 			else:
 				datapoint_2.append([data[i]])
 
-		strength(datapoint_1, level+1)
-		strength(datapoint_2, level+1)
+		exclude.append(optimalfeature)
+
+		strength(datapoint_1, level+1, exclude)
+		strength(datapoint_2, level+1, exclude)
 	
 
 	# print featurestrength[1:]
@@ -47,7 +52,7 @@ def strength(points, level):
 	# datapoints = subsets of data here
 
 
-strength(data,0)
+strength(data,0,[])
 print final
 
 	# return featurestrength[optimalfeature]
@@ -60,6 +65,3 @@ print final
 # 	jgifdkjsg
 # else:
 # 	continue
-
-        
-    
