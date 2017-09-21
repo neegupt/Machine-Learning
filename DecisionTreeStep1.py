@@ -33,6 +33,9 @@ def strength(points, level):
         		datapoint_1.append[data[i]]
     		else:
         		datapoint_2.append[data[i]]
+	strength(datapoint_1, level)
+    	strength(datapoint_2, level)	
+	
 
 	# print featurestrength[1:]
 	# sort stuff here
