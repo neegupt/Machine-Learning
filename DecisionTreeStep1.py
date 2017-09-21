@@ -34,14 +34,14 @@ def strength(points, level, exclude):
 
 
         optimalfeature = [abs(50-x) for x in featurestrength[1:]].index(max([abs(50-x) for x in featurestrength[1:]]))+1
+        datapoint_0=[]
         datapoint_1=[]
-        datapoint_2=[]
         print("optimal", optimalfeature)
         for i in range (0,100):
             if data[i][optimalfeature] == 0:
-                datapoint_1.append([data[i]])
+                datapoint_0.append([data[i]])
             else:
-                datapoint_2.append([data[i]])
+                datapoint_1.append([data[i]])
 
         excluded.append(optimalfeature)
 
@@ -49,10 +49,10 @@ def strength(points, level, exclude):
         print ("exclude", exclude)
 
 
-        strength(datapoint_1, level+1, excluded)
+        strength(datapoint_0, level+1, excluded)
         exclude.append(optimalfeature)
         excluded = exclude
-        strength(datapoint_2, level+1, excluded)
+        strength(datapoint_1, level+1, excluded)
     
 
 
