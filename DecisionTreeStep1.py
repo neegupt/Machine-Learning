@@ -16,8 +16,11 @@ for j in range (0,100):
 # print (data)
 
 final = []
-exclude = []
+outputs = {}
+order = []
 def strength(points, level, exclude):
+	excluded = []
+	excluded.extend(exclude)
 	if level>=Depth:
 		final.append([points])
 	else:
@@ -25,15 +28,15 @@ def strength(points, level, exclude):
 
 		for j in range (0,len(points)):
 		    for i in range(1,n):
-		    	if i in exclude:
+		    	if i in excluded:
 		    		featurestrength[i]=50
 		        elif (data[j][i]==1 and data[j][0]==1) or (data[j][i]==0 and data[j][0]==0):
 		            featurestrength[i]+=1
 
 
 		optimalfeature = [abs(50-x) for x in featurestrength[1:]].index(max([abs(50-x) for x in featurestrength[1:]]))+1
-		datapoint_0=[]
 		datapoint_1=[]
+		datapoint_2=[]
 		print("optimal", optimalfeature)
 		for i in range (0,100):
 			if data[i][optimalfeature] == 0:
@@ -41,13 +44,16 @@ def strength(points, level, exclude):
 			else:
 				datapoint_2.append([data[i]])
 
-		exclude.append(optimalfeature)
-		
-		outputs = {}
-       		outputs.update([optimalfeature:featurestrength[optimalfeature]])
+		excluded.append(optimalfeature)
 
-		strength(datapoint_0, level+1, exclude)
-		strength(datapoint_1, level+1, exclude)
+		order.extend([optimalfeature, featurestrength[optimalfeature]])
+		print ("exclude", exclude)
+
+
+		strength(datapoint_1, level+1, excluded)
+		exclude.append(optimalfeature)
+		excluded = exclude
+		strength(datapoint_2, level+1, excluded)
 	
 
 	# print featurestrength[1:]
@@ -57,6 +63,8 @@ def strength(points, level, exclude):
 
 strength(data,0,[])
 print final
+print order
+
 
 	# return featurestrength[optimalfeature]
 
