@@ -16,7 +16,6 @@ for j in range (0,100):
 # print (data)
 
 final = []
-outputs = {}
 order = []
 def strength(points, level, exclude):
 	excluded = []
@@ -64,6 +63,7 @@ def strength(points, level, exclude):
 strength(data,0,[])
 print final
 print order
+
 
 
 	# return featurestrength[optimalfeature]
