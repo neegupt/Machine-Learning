@@ -42,6 +42,9 @@ def strength(points, level, exclude):
 				datapoint_2.append([data[i]])
 
 		exclude.append(optimalfeature)
+		
+		outputs = {}
+       		outputs.update([optimalfeature:featurestrength[optimalfeature]])
 
 		strength(datapoint_1, level+1, exclude)
 		strength(datapoint_2, level+1, exclude)
